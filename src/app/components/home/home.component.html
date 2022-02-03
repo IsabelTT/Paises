@@ -1,0 +1,22 @@
+<section>
+  <agm-map [latitude]="lat" [longitude]="lng" [fitBounds]="true">
+    <agm-marker [latitude]="country.capitalInfo.latlng[0]" [longitude]="country.capitalInfo.latlng[1]"
+      *ngFor="let country of arrCountry" [agmFitBounds]="true"
+      [iconUrl]="$any({url: country.flags.png, scaledSize: {width: 30, height: 20}})">
+
+      <agm-info-window>
+        <div class="infowindow">
+          <h4>{{ country.name.common}}</h4>
+          <hr>
+          <ul>
+            <li>Capital: {{country.capital}} </li>
+            <li>Moneda: {{ country.currencies | moneda }}</li>
+          </ul>
+          <button class="btn btn-danger btn-sm mt-2" [routerLink]="['/country', country.cca2.toLowerCase()]">Ver
+            detalle</button>
+        </div>
+      </agm-info-window>
+
+    </agm-marker>
+  </agm-map>
+</section>
