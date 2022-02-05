@@ -1,0 +1,30 @@
+<section class="country">
+  <div class="container">
+    <h1 class="mt-5">{{country?.name.common}}</h1>
+    <hr>
+    <div class="row">
+      <figure class="col-12 col-md-3">
+        <img class="img-fluid" [src]="country?.flags.svg" [alt]="country?.name.common">
+      </figure>
+      <div class="col-12 col-md-9">
+        <ul>
+          <li>Población: {{ country?.population | number}} </li>
+          <li>Moneda: {{ country?.currencies | moneda}}</li>
+          <li>Superfice: {{ country?.area }} m<sup>2</sup></li>
+          <li>Capital: {{ country?.capital}} </li>
+        </ul>
+        <div>
+          <h4>Lengua oficial del pais</h4>
+          <hr>
+          {{ country?.languages | lengua }}
+        </div>
+        <div class="mb-4" *ngIf="country?.unMember">
+          <h4 class="text-muted">Este pais es miembro de la unión europea</h4>
+        </div>
+        <a target="_blank" [href]="country?.maps.googleMaps" class="btn btn-danger">GOOGLE MAPS</a>
+      </div>
+    </div>
+
+  </div>
+
+</section>
